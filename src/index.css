@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.allura {
+  font-family: "Allura", cursive;
+}
+
+.nice {
+  font-family: "Righteous", sans-serif;
+}
+
+.poppins {
+  font-family: "Poppins", sans-serif;
+}
