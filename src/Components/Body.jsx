@@ -9,6 +9,7 @@ const Body = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({});
   const [fitImg, setFitImg] = useState(null);
+  const [showNote, setShowNote] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -42,6 +43,9 @@ const Body = () => {
 
   const handleImageChange = (e) => {
     setFitImg(URL.createObjectURL(e.target.files[0]));
+  };
+  const toggleNote = () => {
+    setShowNote(!showNote);
   };
 
   return (
@@ -80,10 +84,19 @@ const Body = () => {
                       <div className="mb-4">
                         <label className="block poppins text-lg font-medium text-gray-700">
                           {questions[step].question}
-                          <span className="ml-2 text-[#8e16e] cursor-pointer">
-                            <FaQuestionCircle title={questions[step].note} />
+                          <span
+                            className="ml-2 text-[#8e16e] cursor-pointer"
+                            onClick={toggleNote}
+                          >
+                            <FaQuestionCircle />
                           </span>
                         </label>
+                        {showNote && (
+                          <div className="mt-2 p-1 rounded text-sm text-gray-700">
+                            {questions[step].note}
+                          </div>
+                        )}
+
                         {questions[step].type === "select" && (
                           <select
                             name={questions[step].id}
